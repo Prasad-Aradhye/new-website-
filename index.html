@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The K-Spot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif
+        }
+
+        body {
+            background: linear-gradient(135deg, #0b0f2a, #1a0f3c);
+            color: #fff;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links button {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: none;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-links button.active,
+        .nav-links button:hover {
+            background: linear-gradient(90deg, #4f7cff, #b84cff);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, #4f7cff, #b84cff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 300;
+        }
+
+        .hero p {
+            margin-top: 15px;
+            color: #ccc;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        .hero-buttons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn.primary {
+            background: linear-gradient(90deg, #4f7cff, #b84cff);
+        }
+
+        /* GLOW TEXT */
+        .glow-text {
+            margin-top: 150px;
+            font-size: 40px;
+            color: #8bd3ff;
+            text-shadow: 0 0 20px #4fc3ff, 0 0 40px #4fc3ff;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 10px
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 10px;
+            background: #1c2a5c;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #bbb;
+            font-size: 14px;
+            margin-bottom: 15px
+        }
+
+        .meta {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        .learn-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #4f7cff, #b84cff);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .learn-btn1 {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #4f7cff, #b84cff);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .footer h4 {
+            margin-bottom: 10px
+        }
+
+        .footer p {
+            color: #bbb;
+            font-size: 14px
+        }
+
+        .copy {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:768px) {
+            .hero h1 {
+                font-size: 30px
+            }
+
+            .glow-text {
+                font-size: 30px
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="logo"> The K-Spot</div>
+        <div class="nav-links">
+            <button class="active">Home</button>
+            <a href="contactus.html" style="text-decoration: none;">
+                <button class="learn-btn1">Contact</button>
+
+                <a href="loginpages.html" style="text-decoration: none;">
+                    <button class="nav-btn">Login</button>
+                </a>
+
+        </div>
+        <div class="profile">
+            <span>Anushka</span>
+            <div class="avatar">
+                <a href="profile.html" style="text-decoration: none;">
+                    <button class="avatar">A</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>The<br>K-Spot</h1>
+        <p>Discover, connect, and thrive with student organizations that fuel innovation, creativity, and community at
+            our college.</p>
+        <div class="hero-buttons">
+            <!-- <button class="btn">Notifications</button> -->
+            <a href="notification.html" style="text-decoration: none;">
+                <button class="btn">Notifications</button>
+            </a>
+
+
+
+            <!-- <button class="btn primary">Add Message</button> -->
+
+            <a href="add_message.html" style="text-decoration: none;">
+                <button class="btn primary">Add Message</button>
+            </a>
+        </div>
+        <div class="glow-text">I promise these updates are much more interesting than that lecture you're sitting in.
+        </div>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <h3>Art Circle</h3>
+            <span class="tag">Creative Arts</span>
+            <p>Expressing creativity and fostering artistic growth through diverse mediums.</p>
+            <div class="meta">52 members • Established 2016</div>
+            <!-- <button class="learn-btn">Learn More</button> -->
+            <a href="art_club.html" style="text-decoration: none;">
+                <button class="learn-btn1">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Google Developer Group</h3>
+            <span class="tag">Technology</span>
+            <p>Empowering students with cutting-edge Google technologies.</p>
+            <div class="meta">67 members • Established 2020</div>
+            <button class="learn-btn">Learn Mor</button>
+        </div>
+
+        <div class="card">
+            <h3>College Magazine & Newsletter</h3>
+            <span class="tag">Media & Journalism</span>
+            <p>Telling the stories that matter through compelling journalism.</p>
+            <div class="meta">28 members • Established 2015</div>
+            <button class="learn-btn">Learn More</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4>The K-Spot</h4>
+                <p>Connecting students through shared passions and interests</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <p>Home</p>
+                <p>Contact Us</p>
+                <p>View All Clubs</p>
+            </div>
+            <div>
+                <h4>Popular Clubs</h4>
+                <p>Robotics Club</p>
+                <p>Google Developer Group</p>
+                <p>Rocketry Club</p>
+            </div>
+            <div>
+                <h4>Contact Info</h4>
+                <p>clubs@college.edu</p>
+                <p>6743893223</p>
+                <p>kkwagh.edu.in</p>
+            </div>
+        </div>
+        <div class="copy">© 2024 The K-Spot. All rights reserved.</div>
+    </footer>
+
+</body>
+
+</html>

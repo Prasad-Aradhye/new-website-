@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The K-Spot | Feed</title>
+    <style>
+        /* --- THE ULTIMATE DARK SYSTEM (CSS PRESERVED) --- */
+        :root {
+            --pure-black: #000000;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff00de;
+            --glass-white: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--pure-black);
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(188, 19, 254, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 100% 100%, rgba(0, 242, 255, 0.15) 0%, transparent 35%);
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+            font-weight: 800;
+        }
+
+        .glow-text {
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        .filter-bar {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            padding: 15px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .f-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: #666;
+            padding: 10px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        .f-btn:hover {
+            color: #fff;
+            border-color: var(--border-glow);
+        }
+
+        .f-btn.active {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
+
+        .notif-container {
+            display: grid;
+            gap: 20px;
+        }
+
+        .notif-card {
+            background: var(--glass-white);
+            border: 1px solid var(--border-glow);
+            padding: 25px;
+            border-radius: 20px;
+            position: relative;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .notif-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: scale(1.02);
+            border-color: var(--neon-purple);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .notif-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20%;
+            height: 60%;
+            width: 4px;
+            background: var(--neon-purple);
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 15px var(--neon-purple);
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .labels {
+            display: flex;
+            gap: 8px;
+        }
+
+        .chip {
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .c-staff {
+            background: rgba(255, 0, 222, 0.15);
+            color: var(--neon-pink);
+            border: 1px solid var(--neon-pink);
+        }
+
+        .c-student {
+            background: rgba(188, 19, 254, 0.15);
+            color: var(--neon-purple);
+            border: 1px solid var(--neon-purple);
+        }
+
+        .c-external {
+            background: #333;
+            color: #fff;
+        }
+
+        .c-section {
+            background: rgba(0, 242, 255, 0.15);
+            color: var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+        }
+
+        .time {
+            font-size: 0.75rem;
+            color: #666;
+            font-weight: 700;
+        }
+
+        .body-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        .loader {
+            text-align: center;
+            color: var(--neon-blue);
+            font-weight: bold;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .filter-bar {
+                gap: 5px;
+                padding: 10px;
+            }
+
+            .f-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>THE <span class="glow-text">PULSE</span></h1>
+
+        <div class="filter-bar">
+            <button class="f-btn active" onclick="applyFilter('all', this)">ALL</button>
+            <button class="f-btn" onclick="applyFilter('staff', this)">STAFF</button>
+            <button class="f-btn" onclick="applyFilter('student', this)">STUDENT</button>
+            <button class="f-btn" onclick="applyFilter('external', this)">EXTERNAL</button>
+        </div>
+
+        <div class="notif-container" id="feed">
+            <div class="loader">SYNCING WITH THE CLOUD...</div>
+        </div>
+    </div>
+
+    <script>
+        // PASTE YOUR GOOGLE WEB APP URL HERE
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYPGwG1khphE4ZmaY7z1h4svBKvgTBE4zwlZwSYypJ55cpv1JnH1n9nZHT0AoUqCA/exec';
+
+        let allData = [];
+
+        async function fetchFeed() {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                allData = await response.json();
+                renderCards(allData);
+            } catch (error) {
+                document.getElementById('feed').innerHTML = `<div class="loader" style="color: var(--neon-pink)">SYNC ERROR: CHECK CONNECTION</div>`;
+            }
+        }
+
+        function renderCards(data) {
+            const feed = document.getElementById('feed');
+            feed.innerHTML = '';
+
+            data.reverse().forEach(item => { // Latest first
+                const card = document.createElement('div');
+                card.className = 'notif-card';
+                card.setAttribute('data-cat', item.userType.toLowerCase());
+
+                // Define Chip Color based on UserType
+                let userTypeClass = 'c-external';
+                if (item.userType.toLowerCase() === 'staff') userTypeClass = 'c-staff';
+                if (item.userType.toLowerCase() === 'student') userTypeClass = 'c-student';
+
+                card.innerHTML = `
+                    <div class="meta">
+                        <div class="labels">
+                            <span class="chip ${userTypeClass}">${item.userType}</span>
+                            <span class="chip c-section">${item.section}</span>
+                        </div>
+                        <span class="time">DL: ${item.deadline}</span>
+                    </div>
+                    <div class="body-text">
+                        ${item.message}
+                    </div>
+                `;
+                feed.appendChild(card);
+            });
+        }
+
+        function applyFilter(choice, btn) {
+            // UI Update
+            document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Filtering Logic
+            const cards = document.querySelectorAll('.notif-card');
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-cat');
+                if (choice === 'all' || cat === choice) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '1';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Initial Load
+        fetchFeed();
+    </script>
+
+</body>
+
+</html>

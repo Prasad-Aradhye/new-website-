@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The K-Spot | User Profile</title>
+    <style>
+        /* --- THE NEON DARK SYSTEM --- */
+        :root {
+            --pure-black: #000000;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--pure-black);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            /* Subtle neon ambient glows in corners */
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(188, 19, 254, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(0, 242, 255, 0.12) 0%, transparent 40%);
+        }
+
+        /* --- PROFILE CONTAINER --- */
+        .profile-card {
+            width: 100%;
+            max-width: 600px;
+            background: var(--glass);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 60px 40px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            animation: glow-breathe 8s infinite alternate;
+        }
+
+        @keyframes glow-breathe {
+            0% {
+                border-color: rgba(188, 19, 254, 0.2);
+            }
+
+            100% {
+                border-color: rgba(0, 242, 255, 0.3);
+            }
+        }
+
+        /* --- BACK BUTTON --- */
+        .back-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-btn:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* --- USER HEADER --- */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .avatar-ring {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            padding: 4px;
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+            box-shadow: 0 0 25px rgba(188, 19, 254, 0.4);
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--pure-black);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            letter-spacing: -1.5px;
+            margin-bottom: 5px;
+        }
+
+        .status-tag {
+            font-size: 0.7rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+        }
+
+        /* --- CONTENT SECTIONS --- */
+        .info-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--neon-purple);
+            transform: translateY(-2px);
+        }
+
+        .label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .value {
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .badge {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            border: 1px solid var(--neon-blue);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 480px) {
+            .profile-card {
+                padding: 80px 20px 40px;
+                border-radius: 0;
+                border: none;
+                height: 100vh;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile-card">
+        <a href="index.html" class="back-btn">← BACK</a>
+
+        <div class="header">
+            <div class="avatar-ring">
+                <div class="avatar-inner">A</div>
+            </div>
+            <span class="status-tag">Verified Student</span>
+            <h1>Anushka</h1>
+            <p style="color: #555; font-size: 0.9rem;">B.Tech Robotics & Automation</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div>
+                    <span class="label">Interview Status</span>
+                    <span class="value">Art Club KKW</span>
+                </div>
+                <span class="badge">ACCEPTED</span>
+            </div>
+
+            <div class="info-item">
+                <div>
+                    <span class="label">Competition</span>
+                    <span class="value">National Tech Expo '26</span>
+                </div>
+                <span class="badge"
+                    style="color: var(--neon-purple); border-color: var(--neon-purple); background: rgba(188, 19, 254, 0.1);">RUNNER
+                    UP</span>
+            </div>
+
+            <div class="info-item">
+                <div>
+                    <span class="label">Current Project</span>
+                    <span class="value">Smart Glasses HUD</span>
+                </div>
+                <span class="value" style="color: #444;">85%</span>
+            </div>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px; font-size: 0.7rem; color: #333; letter-spacing: 1px;">
+            KKW INSTITUTE OF ENGINEERING
+        </p>
+    </div>
+
+</body>
+
+</html>
